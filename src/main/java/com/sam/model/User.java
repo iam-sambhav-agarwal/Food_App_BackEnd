@@ -4,14 +4,12 @@ package com.sam.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sam.dto.RestaurantDto;
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 
-@Data
+@Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
