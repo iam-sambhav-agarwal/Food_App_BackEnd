@@ -21,8 +21,9 @@ public class Food {
     private String name;
     private String description;
     private Long price;
+
     @ManyToOne
-    private Category foogCategory;
+    private Category foodCategory;
 
     @Column(length = 1000)
     @ElementCollection
@@ -34,6 +35,7 @@ public class Food {
     private Restaurant restaurant;
     private boolean isVegetarian;
     private boolean isSeasonal;
+
     @ManyToMany
     private List<IngredientsItem> ingredientsItems = new ArrayList<>();
 
