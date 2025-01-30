@@ -6,7 +6,7 @@ import com.sam.Service.UserService;
 import com.sam.model.Food;
 import com.sam.model.Restaurant;
 import com.sam.model.User;
-import com.sam.response.CreateFoodRequest;
+import com.sam.request.CreateFoodRequest;
 import com.sam.response.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

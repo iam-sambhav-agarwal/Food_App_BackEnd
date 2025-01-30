@@ -1,4 +1,4 @@
-package com.sam.response;
+package com.sam.request;
 
 
 import com.sam.model.Category;

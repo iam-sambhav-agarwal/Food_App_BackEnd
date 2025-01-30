@@ -3,7 +3,7 @@ package com.sam.Service;
 import com.sam.model.Category;
 import com.sam.model.Food;
 import com.sam.model.Restaurant;
-import com.sam.response.CreateFoodRequest;
+import com.sam.request.CreateFoodRequest;
 
 import java.util.List;
 

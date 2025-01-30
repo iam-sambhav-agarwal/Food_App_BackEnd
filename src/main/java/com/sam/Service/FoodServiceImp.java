@@ -4,13 +4,15 @@ import com.sam.model.Category;
 import com.sam.model.Food;
 import com.sam.model.Restaurant;
 import com.sam.repository.FoodRepository;
-import com.sam.response.CreateFoodRequest;
+import com.sam.request.CreateFoodRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class FoodServiceImp implements FoodService {
 
     @Autowired
@@ -18,7 +20,7 @@ public class FoodServiceImp implements FoodService {
 
 
     @Override
-    public Food creteFood(CreateFoodRequest req, Category category, Restaurant restaurant) {
+    public Food createFood(CreateFoodRequest req, Category category, Restaurant restaurant) {
 
         Food food = new Food();
         food.setFoodCategory(category);
@@ -122,6 +124,6 @@ public class FoodServiceImp implements FoodService {
         food.setAvailable(!food.isAvailable());
 
         return foodRepository.save(food);
-        
+
     }
 }
