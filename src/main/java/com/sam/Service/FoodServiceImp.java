@@ -8,6 +8,7 @@ import com.sam.request.CreateFoodRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,6 +33,7 @@ public class FoodServiceImp implements FoodService {
         food.setIngredientsItems(req.getIngredients());
         food.setSeasonal(req.isSeasonal());
         food.setVegetarian(req.isVegetarian());
+        food.setCreationDate(new Date());
 
         Food savedFood = foodRepository.save(food);
 
@@ -45,24 +47,26 @@ public class FoodServiceImp implements FoodService {
 
         Food food = findFoodById(foodId);
         food.setRestaurant(null);
-        foodRepository.save(food);
+        food.setFoodCategory(null);
+        foodRepository.delete(food);
 
     }
 
     @Override
     public List<Food> getRestaurantsFood(Long restaurantId,
                                          boolean isVegetarian,
-                                         boolean isNonVeg,
                                          boolean isSeasonal,
+                                         boolean isNonVeg,
                                          String foodCategory) {
 
 
         List<Food> foods = foodRepository.findByRestaurantId(restaurantId);
+        
         if (isVegetarian) {
             foods = filterByVegetarian(foods, isVegetarian);
         }
         if (isNonVeg) {
-            foods = filterByNonVeg(foods, isNonVeg);
+            foods = filterByNonVeg(foods);
         }
         if (isSeasonal) {
             foods = filterBySeasonal(foods, isSeasonal);
@@ -95,7 +99,7 @@ public class FoodServiceImp implements FoodService {
         return foods.stream().filter(food -> food.isSeasonal() == isSeasonal).collect(Collectors.toList());
     }
 
-    private List<Food> filterByNonVeg(List<Food> foods, boolean isNonVeg) {
+    private List<Food> filterByNonVeg(List<Food> foods) {
         return foods.stream().filter(food -> !food.isVegetarian()).collect(Collectors.toList());
     }
 

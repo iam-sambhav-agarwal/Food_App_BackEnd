@@ -40,7 +40,7 @@ public class IngredientController {
     }
 
 
-    @PutMapping("/{id}/stoke")
+    @PutMapping("/{id}/stock")
     public ResponseEntity<IngredientsItem> updateIngredientStock(
             @PathVariable Long id) throws Exception {
 

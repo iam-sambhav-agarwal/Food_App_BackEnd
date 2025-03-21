@@ -14,7 +14,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Restaurant {
 
     @Id
@@ -30,10 +29,13 @@ public class Restaurant {
     private Address address;
 
     @Embedded
-    private ContactInformation contactFormation;
+    private ContactInformation contactInformation;
     private String openingHours;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders = new ArrayList<>();
+
     @ElementCollection
     @Column(length = 1000)
     private List<String> images;
